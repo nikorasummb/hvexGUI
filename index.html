@@ -33,6 +33,9 @@
   <script>
     var serviceWorkerVersion = '4285926940';
     var scriptLoaded = false;
+	
+	
+	
     function loadMainDartJs() {
       if (scriptLoaded) {
         return;
@@ -45,6 +48,9 @@
     }
 
     if ('serviceWorker' in navigator) {
+	  window.addEventListener('flutter-first-frame', function () {
+    navigator.serviceWorker.register('flutter_service_worker.js');
+  });
       // Service workers are supported. Use them.
       window.addEventListener('load', function () {
         // Wait for registration to finish before dropping the <script> tag.
